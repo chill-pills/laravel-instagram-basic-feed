@@ -2,10 +2,8 @@
 
 namespace ChillPills\InstagramBasicFeed;
 
-use Doctrine\Instantiator\Instantiator;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Cache;
 use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
+use Illuminate\Support\Facades\Cache;
 
 class InstagramFeedCrawler
 {
@@ -19,7 +17,7 @@ class InstagramFeedCrawler
         $accessToken = config('instagram-basic-feed.access-token');
 
         $this->instagramBasicDisplay = new InstagramBasicDisplay($accessToken);
-        
+
         $this->userMedia = null;
         $this->medias = [];
 
@@ -37,7 +35,9 @@ class InstagramFeedCrawler
 
     public function getAllUserMedias()
     {
-        if (count($this->medias)) return $this->medias;
+        if (count($this->medias)) {
+            return $this->medias;
+        }
 
         $before = null;
 
@@ -63,7 +63,7 @@ class InstagramFeedCrawler
         $finalMedias = [];
 
         foreach ($this->medias as $media) {
-            if (!array_key_exists($media->id, $finalMedias)) {
+            if (! array_key_exists($media->id, $finalMedias)) {
                 $finalMedias[$media->id] = $media;
             }
         }
