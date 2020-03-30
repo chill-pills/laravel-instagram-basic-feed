@@ -7,7 +7,7 @@ Laravel package that connect to Instagram's new API Basic Display. Retrieve pers
 This package require PHP 7.2 or later and Laravel 5.8 or higher.
 
 ```bash
-composer required chill-pills/laravel-instagram-basic-feed
+composer require chill-pills/laravel-instagram-basic-feed
 ```
 
 ## Usage
