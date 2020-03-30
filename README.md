@@ -1,6 +1,6 @@
 # Laravel Instagram Basic Feed
 
-Laravel package that connect to Instagram's new API Basic Display. Retrieve personal user's posts and keep them in cache, with specific commands or with Scheduler and take care to refresh the token's every two months.
+Laravel package connecting to Instagram's new API Basic Display. Retrieving personal user's posts and keep them in cache, with specific commands or with Scheduler, and taking charge of refreshing the Instagram token every two months.
 
 ## Installation
 
@@ -12,14 +12,14 @@ composer require chill-pills/laravel-instagram-basic-feed
 
 ## Usage
 
-There's two commands that let's you fetch your feed or renew the Access Token.
+There's two commands that lets you fetch your feed or renew the Access Token.
 
 ```bash
 php artisan instagram-feed:crawl
 php artisan instagram-feed:refresh-key
 ```
 
-You can add the following scheduler's command to take care of executing thoses commands automatically
+You can add the following scheduler's command to take care of executing those commands automatically
 
 ```php
     protected function schedule(Schedule $schedule)
@@ -41,7 +41,7 @@ To show the Instagram feed on your page, you can just add the following Blade co
 @include('instagram-basic-feed::instagram-post')
 ```
 
-You can pass to the include a hashtag so that we can search through the posts
+You can pass to the @include a hashtag used to search through the posts
 
 ```html
 @include('instagram-basic-feed::instagram-post', ['hastag' => '#duckhunt'])
