@@ -12,5 +12,5 @@ return [
      * String name used to store the feed in the cache
      */
 
-    'cache-key' => env('INSTAGRAM_BASIC_API_CACHE_KEY', 'instagram-medias')
+    'cache-key' => env('INSTAGRAM_BASIC_API_CACHE_KEY', 'instagram-medias'),
 ];

@@ -3,7 +3,6 @@
 namespace ChillPills\InstagramBasicFeed;
 
 use Illuminate\Support\Facades\Cache;
-use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
 
 class InstagramBasicFeed
 {
@@ -21,8 +20,10 @@ class InstagramBasicFeed
 
     public function getUserMediasWithHashtag($hashtag)
     {
-        if (empty($hashtag)) return $this->getUserMedias();
-        
+        if (empty($hashtag)) {
+            return $this->getUserMedias();
+        }
+
         $mediaMatch = [];
 
         foreach ($this->medias as $media) {
