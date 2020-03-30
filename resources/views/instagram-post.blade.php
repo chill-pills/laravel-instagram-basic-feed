@@ -1,4 +1,9 @@
-@foreach(InstagramBasicFeed::getUserMediasWithHashtag($hastag) as $media)
+@php
+    $tag = '';
+    if (isset($hashtag)) $tag = $hastag;
+@endphp
+
+@foreach(InstagramBasicFeed::getUserMediasWithHashtag($tag) as $media)
     <div class="rounded overflow-hidden border w-full lg:w-6/12 md:w-6/12 bg-white mx-3 md:mx-0 lg:mx-0">
         <div class="w-full flex justify-between p-3">
             <div class="flex">
@@ -12,11 +17,13 @@
         </div>
         <img class="w-full bg-cover" src="{{ $media->media_url }}">
     
-        <div class="px-3">
-            <div class="my-3 text-sm">
-                {{-- <span class="font-medium mr-2">{{ $media->username }}</span> --}}
-                {{ $media->caption }}
+        @if (property_exists($media, 'caption'))
+            <div class="px-3">
+                <div class="my-3 text-sm">
+                    {{-- <span class="font-medium mr-2">{{ $media->username }}</span> --}}
+                    {{ $media->caption }}
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 @endforeach

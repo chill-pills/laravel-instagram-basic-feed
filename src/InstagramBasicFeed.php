@@ -21,6 +21,8 @@ class InstagramBasicFeed
 
     public function getUserMediasWithHashtag($hashtag)
     {
+        if (empty($hashtag)) return $this->getUserMedias();
+        
         $mediaMatch = [];
 
         foreach ($this->medias as $media) {
