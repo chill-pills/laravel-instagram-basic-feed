@@ -1,6 +1,6 @@
 {
-    "name": "chillpills/laravel-instagram-basic-feed",
-    "description": "Laravel package that connect to Instagram's new API Basic Display , retrieve personal user's posts and keep them in cache, up to date with Scheduler and take care to refresh the token's every two months.",
+    "name": "chill-pills/laravel-instagram-basic-feed",
+    "description": "Laravel package that connect to Instagram's new API Basic Display. Retrieve personal user's posts and keep them in cache, with specific commands or with Scheduler and take care to refresh the token's every two months.",
     "type": "library",
     "license": "MIT",
     "authors": [
