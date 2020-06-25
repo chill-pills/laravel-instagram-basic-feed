@@ -10,6 +10,14 @@ This package require PHP 7.2 or later and Laravel 5.8 or higher.
 composer require chill-pills/laravel-instagram-basic-feed
 ```
 
+Add and complete these lines in your .env file
+
+```bash
+INSTAGRAM_APP_ID=
+INSTAGRAM_SECRET_KEY=
+INSTAGRAM_ACCESS_TOKEN=
+```
+
 ## Usage
 
 There's two commands that lets you fetch your feed or renew the Access Token.
@@ -46,4 +54,13 @@ You can pass to the @include a hashtag used to search through the posts
 ```html
 @include('instagram-basic-feed::instagram-post', ['hastag' => '#duckhunt'])
 ```
+
+
+If you want to modify the view displaying the instagram posts itself
+
+```bash
+php artisan vendor:publish --tag=instagram-basic-feed-view
+```
+
+
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
