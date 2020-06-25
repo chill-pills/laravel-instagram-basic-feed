@@ -24,7 +24,7 @@
         @if (property_exists($media, 'caption'))
            
         <div class="w-40 px-3">
-            <div class="my-3 text-xs truncate">
+            <div class="my-3 truncate">
                 <span class="font-medium text-sm mb-2">{{ $media->username }}</span><br><br>
                 <span class="font-normal text-xs">{{ $media->caption }}<span>
             </div>
