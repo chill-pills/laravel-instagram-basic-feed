@@ -37,7 +37,7 @@ You can add the following scheduler's command to take care of executing those co
     }
 ```
 
-Don't forget to enable the CRON on your machine for Laravel Basic Scheduler
+Don't forget to enable the CRON on your machine for Laravel Basic Scheduler in your app/Console/Kernel.php file
 
 ```bash
 * * * * * cd /home/path/to/your/project && php artisan schedule:run >> /dev/null 2>&1
