@@ -1,6 +1,6 @@
 @php
     $tag = '';
-    if (isset($hashtag)) $tag = $hastag;
+    if (isset($hashtag)) $tag = $hashtag;
 @endphp
 
 <div class="flex overflow-x-scroll py-4">
