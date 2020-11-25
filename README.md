@@ -73,6 +73,14 @@ You will be redirected to the `INSTAGRAM_VALID_OAUTH_URI`. If you look in your b
  
 Copy the authorization code, The authorization code in the redirect URL is everything after `code=` up to (but not including) the `#_` at the end.
 
+### Use the authorization code to obtain a short-lived API token & Exchange the short-lived API token for a long-lived API token
+
+Now with the authorization code we are going to generate access token we can use in our application. Use the command below generate the token. We generate long-lived `access_token` because those are valid for 60 days. Replace the `authorization_code` with the code from the last step.
+```bash
+php artisan instagram-feed:setup-new-access-token <authoriczation-code>
+```
+
+Awesome! Now, with this long-lived access_token, you can make requests to the API for the next 60 days. You can also refresh the token, extending for another 60 days as long as the token is not expired and is at least 24 hours old (and has not been revoked by your Instagram user deauthorizing your app).
 
 ## Usage
 
