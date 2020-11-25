@@ -17,13 +17,13 @@ class InstagramRefreshAccessToken extends Command
 
     public function handle()
     {
-        $this->currentAccessToken = config('instagram-feed.access_token');
+        $this->currentAccessToken = config('instagram-basic-feed.access_token');
 
         $this->instagramBasicDisplay = new InstagramBasicDisplay($this->currentAccessToken);
 
         $this->info('[InstagramRefreshAccessToken] handle');
-        $this->info('[CURRENT_ACCESS_TOKEN] : '.config('instagram-feed.access_token'));
-        $this->info('[CURRENT_ACCESS_TOKEN] : '.Config::get('instagram-feed.access_token'));
+        $this->info('[CURRENT_ACCESS_TOKEN] : '.config('instagram-basic-feed.access_token'));
+        $this->info('[CURRENT_ACCESS_TOKEN] : '.Config::get('instagram-basic-feed.access_token'));
         $newAccessToken = $this->instagramBasicDisplay->refreshToken($this->currentAccessToken);
         $this->setNewAccessTokenToEnvFile($newAccessToken);
     }
@@ -31,8 +31,17 @@ class InstagramRefreshAccessToken extends Command
     public function setNewAccessTokenToEnvFile($newAccessToken)
     {
         $this->info('[!!] Old access Token : '.env('INSTAGRAM_ACCESS_TOKEN'));
-        // $this->info(print_r($newAccessToken->access_token, true));
-        putenv('INSTAGRAM_ACCESS_TOKEN='.$newAccessToken->access_token);
-        $this->info('[!!] New access Token : '.env('INSTAGRAM_ACCESS_TOKEN'));
+        $key = 'INSTAGRAM_ACCESS_TOKEN';
+
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+
+            file_put_contents($path, str_replace(
+                $key . '=' . env($key), $key . '=' . $newAccessToken->access_token, file_get_contents($path)
+            ));
+        }
+
+        $this->info('[!!] New access Token set successfully');
     }
 }
