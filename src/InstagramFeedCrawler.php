@@ -14,14 +14,14 @@ class InstagramFeedCrawler
 
     public function __construct()
     {
-        $accessToken = config('instagram-basic-feed.access-token');
+        $accessToken = config('instagram-basic-feed.access_token');
 
         $this->instagramBasicDisplay = new InstagramBasicDisplay($accessToken);
 
         $this->userMedia = null;
         $this->medias = [];
 
-        self::$cacheKey = config('instagram-basi-api.cache-key');
+        self::$cacheKey = config('instagram-basic-feed.cache_key');
     }
 
     public function getUserMedia($before = null, $after = null)
