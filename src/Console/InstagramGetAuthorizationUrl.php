@@ -14,9 +14,9 @@ class InstagramGetAuthorizationUrl extends Command
     public function handle()
     {
         $this->instagramBasicDisplay = new InstagramBasicDisplay([
-            'appId' => config('instagram-feed.instagram_app_id'),
-            'appSecret' => config('instagram-feed.instagram_secret_key'),
-            'redirectUri' => config('instagram-feed.instagram_valid_oauth_uri'),
+            'appId' => config('instagram-basic-feed.instagram_app_id'),
+            'appSecret' => config('instagram-basic-feed.instagram_secret_key'),
+            'redirectUri' => config('instagram-basic-feed.instagram_valid_oauth_uri'),
         ]);
 
         $this->info($this->instagramBasicDisplay->getLoginUrl());
