@@ -5,7 +5,7 @@ namespace ChillPills\InstagramBasicFeed\Console;
 use EspressoDev\InstagramBasicDisplay\InstagramBasicDisplay;
 use Illuminate\Console\Command;
 
-class InstagramGenerateAuthorizationUrl extends Command
+class InstagramGetAuthorizationUrl extends Command
 {
     protected $signature = 'instagram-feed:get-authorization-url';
 
