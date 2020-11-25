@@ -38,7 +38,7 @@ class InstagramRefreshAccessToken extends Command
         if (file_exists($path)) {
 
             file_put_contents($path, str_replace(
-                $key . '=' . env($key), $key . '=' . $newAccessToken->access_token, file_get_contents($path)
+                 $key.'='.env($key), $key.'='.$newAccessToken->access_token, file_get_contents($path)
             ));
         }
 
