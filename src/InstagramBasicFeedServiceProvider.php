@@ -5,6 +5,7 @@ namespace ChillPills\InstagramBasicFeed;
 use ChillPills\InstagramBasicFeed\Console\InstagramCrawlFeed;
 use ChillPills\InstagramBasicFeed\Console\InstagramGetAuthorizationUrl;
 use ChillPills\InstagramBasicFeed\Console\InstagramRefreshAccessToken;
+use ChillPills\InstagramBasicFeed\Console\InstagramSetNewAccessToken;
 use Illuminate\Support\ServiceProvider;
 
 class InstagramBasicFeedServiceProvider extends ServiceProvider
@@ -15,7 +16,8 @@ class InstagramBasicFeedServiceProvider extends ServiceProvider
             $this->commands([
                 InstagramCrawlFeed::class,
                 InstagramRefreshAccessToken::class,
-                InstagramGetAuthorizationUrl::class
+                InstagramGetAuthorizationUrl::class,
+                InstagramSetNewAccessToken::class
             ]);
         }
 
