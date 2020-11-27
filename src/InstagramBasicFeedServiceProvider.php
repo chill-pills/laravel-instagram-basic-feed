@@ -17,7 +17,7 @@ class InstagramBasicFeedServiceProvider extends ServiceProvider
                 InstagramCrawlFeed::class,
                 InstagramRefreshAccessToken::class,
                 InstagramGetAuthorizationUrl::class,
-                InstagramSetNewAccessToken::class
+                InstagramSetNewAccessToken::class,
             ]);
         }
 
