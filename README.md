@@ -68,7 +68,7 @@ Click on Authorize
 You will be redirected to the `INSTAGRAM_VALID_OAUTH_URI`. If you look in your browser’s URL bar, you should notice the URL has an authorization code that has been appended to the redirect URL. Something like this:
 
 ```bash
-{INSTAGRAM_VALID_OAUTH_URI}?code=AQBvJwCZtYdj1zLH_5myoAA1GRRpDhs1vcHFMzB4gvRk6dLkq5dNd24EVZ5FD9WoqQhfSuo6arUB17MPu2gRqEzP6EpsAl-9_2eC9-L6mWYQdWDyarkwDSNEs8T3gvoH-WLMHzhwwd6DJqP5PxJGf2ve53m7aGMEua3MzV8FZQVz5AfwWPN3G87n25jMBGgGGVj6G4pxJ9HqzNKmdpYK8GHKnRn_G03scHtUraFlEX5faCvz6ZO7Xw#_
+{INSTAGRAM_VALID_OAUTH_URI}?code=AQBv...Xw#_
 ``` 
  
 Copy the authorization code, The authorization code in the redirect URL is everything after `code=` up to (but not including) the `#_` at the end.
