@@ -2,9 +2,20 @@
 
 Laravel package connecting to Instagram's new API Basic Display. Retrieving personal user's posts and keep them in cache, with specific commands or with Scheduler, and taking charge of refreshing the Instagram token every two months.
 
+## Get started
+
+To use the [Instagram Basic Display API](https://developers.facebook.com/docs/instagram-basic-display-api), you will need to register a Facebook app and configure Instagram Basic Display. Follow the [getting started guide](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started).
+
+## Requirements
+
+- PHP 7 or higher
+- cURL
+- Facebook Developer Account
+- Facebook App
+
 ## Installation
 
-This package require PHP 7.2 or later and Laravel 5.8 or higher.
+Install the package in your application by running
 
 ```bash
 composer require chill-pills/laravel-instagram-basic-feed
@@ -13,10 +24,63 @@ composer require chill-pills/laravel-instagram-basic-feed
 Add and complete these lines in your .env file
 
 ```bash
+INSTAGRAM_VALID_OAUTH_URI=
 INSTAGRAM_APP_ID=
 INSTAGRAM_SECRET_KEY=
 INSTAGRAM_ACCESS_TOKEN=
 ```
+
+For the `INSTAGRAM_VALID_OAUTH_URI` entry, you will use the same URI you used in the Valid OAuth Redirect URIs field when you created the Instagram App. We will retrieve the `INSTAGRAM_ACCESS_TOKEN` in the next steps. (Ensure all the other env entries are complete)
+
+## Set Up
+
+We will need to go over the following steps to ensure our package is configure to work correctly;
+- Permit your App to access your Instagram account’s profile and media
+- Retrieve the Authorization code that from the URL 
+- Use the authorization code to obtain a short-lived API token
+- Exchange the short-lived API token for a long-lived API token
+
+### Permit your App to access your Instagram account’s profile and media
+
+We need to generate a link which redirects the user to the Instagram “Authorization Window". You can generate the url by running the following command:
+
+```bash
+php artisan instagram-feed:get-authorization-url
+``` 
+Copy & Enter the url in your browser (Your authorization window link should look something like this)
+
+```bash
+https://api.instagram.com/oauth/authorize
+  ?client_id={INSTAGRAM_APP_ID}
+  &redirect_uri={INSTAGRAM_VALID_OAUTH_URI}
+  &scope=user_profile,user_media
+  &response_type=code
+``` 
+
+Next, you will be shown the Authorization Window
+
+![Image of Yaktocat](https://miro.medium.com/max/572/1*cZkdBYn19OIyyPLyPTWAbA.png)
+
+Click on Authorize
+
+### Retrieve the Authorization code that from the URL
+
+You will be redirected to the `INSTAGRAM_VALID_OAUTH_URI`. If you look in your browser’s URL bar, you should notice the URL has an authorization code that has been appended to the redirect URL. Something like this:
+
+```bash
+{INSTAGRAM_VALID_OAUTH_URI}?code=AQBv...Xw#_
+``` 
+ 
+Copy the authorization code, The authorization code in the redirect URL is everything after `code=` up to (but not including) the `#_` at the end.
+
+### Use the authorization code to obtain a short-lived API token & Exchange the short-lived API token for a long-lived API token
+
+Now with the authorization code we are going to generate access token we can use in our application. Use the command below generate the token. We generate long-lived `access_token` because those are valid for 60 days. Replace the `authorization_code` with the code from the last step.
+```bash
+php artisan instagram-feed:setup-new-access-token <authoriczation-code>
+```
+
+Awesome! Now, with this long-lived access_token, you can make requests to the API for the next 60 days. You can also refresh the token, extending for another 60 days as long as the token is not expired and is at least 24 hours old (and has not been revoked by your Instagram user deauthorizing your app).
 
 ## Usage
 
